@@ -46,26 +46,25 @@ This is the expected output
 > node index.js
 
 starting stopwatch...
-stopwatch: 0.047ms
+stopwatch: 0.046ms
 
+---------
 
 Sending email to Leonardo
 Email sent to Leonardo with success!
-stopwatch: 2.041s
+stopwatch: 2.043s
 
 ---------
 
 Sending email to Yip
 Email sent to Yip with success!
-stopwatch: 3.037s
+stopwatch: 3.036s
 
 ---------
 
 Sending email to Marcelo
 Email sent to Marcelo with success!
-stopwatch: 5.010s
-
----------
+stopwatch: 5.021s
 ```
 
 ## License
