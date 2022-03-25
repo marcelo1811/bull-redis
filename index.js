@@ -1,14 +1,17 @@
 const Bull = require('bull');
 
 function sendEmail(userName) {
-  console.log(`Send email to: ${userName}`)
+  console.log(`Sending email to ${userName}`)
 }
 
 (async () => {
-  const myFirstQueue = new Bull('my-first-queue', { redis: { port: 6379, host: '127.0.0.1' } });
+  const emailQueue = new Bull('email-queue', { redis: { port: 6379, host: '127.0.0.1' } });
   
+  console.log('starting stopwatch...')
   console.time('stopwatch');
-  await myFirstQueue.add({
+  console.timeLog('stopwatch');
+
+  await emailQueue.add({
     user: {
       name: 'Marcelo'
     }
@@ -16,7 +19,7 @@ function sendEmail(userName) {
     delay: 5000
   });
 
-  await myFirstQueue.add({
+  await emailQueue.add({
     user: {
       name: 'Leonardo'
     }
@@ -24,7 +27,7 @@ function sendEmail(userName) {
     delay: 2000
   });
 
-  await myFirstQueue.add({
+  await emailQueue.add({
     user: {
       name: 'Yip'
     }
@@ -32,15 +35,16 @@ function sendEmail(userName) {
     delay: 3000
   });
 
-  myFirstQueue.process( async (job) => {
+  emailQueue.process( async (job) => {
     const { user: { name } } = job.data;
+
+    console.log('\n---------\n');
     sendEmail(name);
-    return Promise.resolve(`${name} - success`)
+    return Promise.resolve(name)
   });
   
-  myFirstQueue.on('completed', (job, result) => {
-    console.log(`Job completed with result: ${result}`);
+  emailQueue.on('completed', (job, result) => {
+    console.log(`Email sent to ${result} with success!`);
     console.timeLog('stopwatch');
-    console.log('---------');
   })
 })()

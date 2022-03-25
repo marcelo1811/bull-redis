@@ -45,17 +45,26 @@ This is the expected output
 ```bash
 > node index.js
 
-Send email to: Leonardo
-Job completed with result: Leonardo - success
-stopwatch: 2.044s
+starting stopwatch...
+stopwatch: 0.047ms
+
+
+Sending email to Leonardo
+Email sent to Leonardo with success!
+stopwatch: 2.041s
+
 ---------
-Send email to: Yip
-Job completed with result: Yip - success
+
+Sending email to Yip
+Email sent to Yip with success!
 stopwatch: 3.037s
+
 ---------
-Send email to: Marcelo
-Job completed with result: Marcelo - success
-stopwatch: 5.021s
+
+Sending email to Marcelo
+Email sent to Marcelo with success!
+stopwatch: 5.010s
+
 ---------
 ```
 
