@@ -7,6 +7,7 @@ function sendEmail(userName) {
 (async () => {
   const myFirstQueue = new Bull('my-first-queue', { redis: { port: 6379, host: '127.0.0.1' } });
   
+  console.time('stopwatch');
   await myFirstQueue.add({
     user: {
       name: 'Marcelo'
@@ -39,5 +40,7 @@ function sendEmail(userName) {
   
   myFirstQueue.on('completed', (job, result) => {
     console.log(`Job completed with result: ${result}`);
+    console.timeLog('stopwatch');
+    console.log('---------');
   })
 })()
