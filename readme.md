@@ -3,7 +3,7 @@
 Simple project using bull and redis for learning
 
 ## What Does the Project do?
-This is a simple project that try to simulate scheduled emails using redis queue. In this project we have scheduled 3 emails sent with different delayed times.
+This is a simple project that try to simulate scheduled emails using redis queue. In this project we have scheduled 3 emails sent with different delayed times. **(It is preferable to use [cron](https://crontab.guru/#40_23_*_*_*) to schedule it, but I used ***time delay*** for experimental proposes)**
 
 When the email is being send it should log the message<br>
 ```bash
